@@ -226,7 +226,7 @@ export default function Hero({ tagline }: HeroProps) {
             </div>
 
             {/* Freshman.tv-style ticker at bottom */}
-            <div className="absolute bottom-[3%] md:bottom-[6%] left-0 right-0 z-20 overflow-hidden">
+            <div className="absolute bottom-[10%] md:bottom-[6%] left-0 right-0 z-20 overflow-hidden">
                 <div className="bg-[rgba(5,10,22,0.58)] backdrop-blur-[7px] shadow-[0_-8px_24px_rgba(0,0,0,0.4)]">
                     {/* Top dashed line */}
                     <div className="w-full border-t border-dashed border-white/45"></div>
@@ -290,7 +290,7 @@ export default function Hero({ tagline }: HeroProps) {
             </div>
 
             {/* Year / copyright — sits at absolute bottom, centered */}
-            <div className="absolute bottom-2 left-0 right-0 z-30 text-center">
+            <div className="absolute bottom-6 left-0 right-0 z-30 text-center">
                 <span className="text-[1.4rem] text-white font-['Brush_Script_MT',_'Segoe_Script',_cursive] italic tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">2026©</span>
             </div>
 
