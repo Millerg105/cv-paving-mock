@@ -279,13 +279,14 @@ html.lenis body {
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }
 
 .animate-slide {
-    animation: slide 52s linear infinite;
-    width: max-content;
+    animation: slide 35s linear infinite;
+    flex-shrink: 0;
+    min-width: 100%;
 }
 
 /* Hero single background: always visible, Ken Burns only */

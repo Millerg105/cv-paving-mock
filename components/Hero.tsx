@@ -230,20 +230,46 @@ export default function Hero({ tagline }: HeroProps) {
                 <div className="bg-[rgba(5,10,22,0.58)] backdrop-blur-[7px] shadow-[0_-8px_24px_rgba(0,0,0,0.4)]">
                     {/* Top dashed line */}
                     <div className="w-full border-t border-dashed border-white/45"></div>
-
-                    {/* Sliding row */}
-                    <div className="py-2 overflow-hidden">
-                        <div className="flex gap-0 animate-slide w-max">
-                            {allProjects.map((project, index) => (
-                                <div key={index} className="flex items-center flex-shrink-0 cursor-pointer group">
+                    {/* Sliding row (Two-Container Marquee Fix for iOS) */}
+                    <div className="py-2 overflow-hidden flex w-full">
+                        {/* Track 1 */}
+                        <div className="flex animate-slide min-w-full">
+                            {projects.map((project, index) => (
+                                <div key={`t1-${index}`} className="flex items-center flex-shrink-0 cursor-pointer group px-4">
                                     {/* Text */}
-                                    <div className="flex flex-col gap-2 pr-9 max-w-[300px]">
-                                        <span className="text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight">{project.title}</span>
-                                        <span className="text-[0.76rem] text-white/78 tracking-[0.11em] uppercase">{project.subtitle}</span>
-                                        <span className="text-[0.82rem] text-white/72 leading-snug font-sans">{project.description}</span>
+                                    <div className="flex flex-col justify-center gap-1.5 pr-5 w-[250px] shrink-0">
+                                        <span className="text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
+                                        <span className="text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
+                                        <span className="text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-3">{project.description}</span>
                                     </div>
                                     {/* Image */}
-                                    <div className="relative mx-4 aspect-[3/2] w-[260px] overflow-hidden rounded-sm sm:w-[285px] md:mx-5 md:w-[310px] lg:w-[335px] xl:w-[355px]">
+                                    <div className="relative aspect-[3/2] w-[260px] shrink-0 overflow-hidden rounded-sm sm:w-[285px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            priority={true}
+                                            unoptimized={true}
+                                            sizes="(max-width: 640px) 230px, (max-width: 768px) 250px, (max-width: 1024px) 275px, (max-width: 1280px) 295px, 315px"
+                                            className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Track 2 (Duplicate for Seamless Loop) */}
+                        <div className="flex animate-slide min-w-full">
+                            {projects.map((project, index) => (
+                                <div key={`t2-${index}`} className="flex items-center flex-shrink-0 cursor-pointer group px-4">
+                                    {/* Text */}
+                                    <div className="flex flex-col justify-center gap-1.5 pr-5 w-[250px] shrink-0">
+                                        <span className="text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
+                                        <span className="text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
+                                        <span className="text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-3">{project.description}</span>
+                                    </div>
+                                    {/* Image */}
+                                    <div className="relative aspect-[3/2] w-[260px] shrink-0 overflow-hidden rounded-sm sm:w-[285px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
                                         <Image
                                             src={project.image}
                                             alt={project.title}
@@ -270,6 +296,6 @@ export default function Hero({ tagline }: HeroProps) {
                 <span className="text-[1.4rem] text-white font-['Brush_Script_MT',_'Segoe_Script',_cursive] italic tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">2026©</span>
             </div>
 
-        </section>
+        </section >
     )
 }
