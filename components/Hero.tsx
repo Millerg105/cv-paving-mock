@@ -165,6 +165,8 @@ export default function Hero({ tagline }: HeroProps) {
                                 alt="Hero Background"
                                 fill
                                 priority={index === 0}
+                                unoptimized={true}
+                                fetchPriority={index === 0 ? "high" : "auto"}
                                 onLoad={() => {
                                     if (index === 0) {
                                         setPhotosLoaded(true)
@@ -176,12 +178,12 @@ export default function Hero({ tagline }: HeroProps) {
                         </div>
                     ))
                 ) : (
-                        <div
-                            className="absolute inset-0"
-                            style={{
-                                background: config.colors.background || '#020B27'
-                            }}
-                        />
+                    <div
+                        className="absolute inset-0"
+                        style={{
+                            background: config.colors.background || '#020B27'
+                        }}
+                    />
                 )}
 
                 {/* Minimal bottom fade so content below hero reads cleanly */}
@@ -192,7 +194,7 @@ export default function Hero({ tagline }: HeroProps) {
             <div className="absolute inset-0 z-20 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-0">
                     {/* Main Logo - Animated Shutter Image */}
-                    <div className="relative w-[85vw] max-w-[1200px]" style={{ aspectRatio: '3.5 / 1' }}>
+                    <div className="relative w-[94vw] md:w-[85vw] max-w-[1200px]" style={{ aspectRatio: '3.5 / 1' }}>
                         <HeroShutterImage
                             src={clientPhotos['logo']?.[0] || config.images.logo}
                             alt={config.businessName}
@@ -203,8 +205,8 @@ export default function Hero({ tagline }: HeroProps) {
 
                     {/* Tagline + Subtag — single wider glass bubble */}
                     <div className="mt-8 px-4 flex justify-center">
-                        <div className="w-fit max-w-[82vw] rounded-full bg-black/22 backdrop-blur-[7px] border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-                            <div className="flex flex-col items-center gap-2 px-[1.875rem] py-4 md:px-8 md:py-4">
+                        <div className="w-fit max-w-[92vw] md:max-w-[82vw] rounded-3xl md:rounded-full bg-black/22 backdrop-blur-[7px] border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+                            <div className="flex flex-col items-center gap-2 px-5 py-3 md:px-[1.875rem] md:py-4">
                                 <p
                                     className="max-w-[620px] text-[clamp(1.1rem,1.4vw,1.12rem)] leading-[1.45] text-white font-medium text-center"
                                     style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.75)' }}
@@ -246,6 +248,8 @@ export default function Hero({ tagline }: HeroProps) {
                                             src={project.image}
                                             alt={project.title}
                                             fill
+                                            priority={true}
+                                            unoptimized={true}
                                             sizes="(max-width: 640px) 230px, (max-width: 768px) 250px, (max-width: 1024px) 275px, (max-width: 1280px) 295px, 315px"
                                             className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                                         />
