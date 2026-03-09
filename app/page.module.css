@@ -1,0 +1,33 @@
+.statusLoading {
+    background: linear-gradient(90deg, rgba(255, 41, 54, 0.1) 0%, rgba(255, 41, 54, 0.2) 50%, rgba(255, 41, 54, 0.1) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Agent integration notice */
+.agentNotice {
+    background: rgba(255, 41, 54, 0.05);
+    border: 1px solid rgba(255, 41, 54, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.agentNotice p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.agentNotice p:first-child {
+    color: var(--text-primary);
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.agentNotice em {
+    color: var(--accent-color);
+    font-style: normal;
+    font-weight: 500;
+}

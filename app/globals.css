@@ -1,0 +1,388 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force CSS Rebuild */
+
+@layer base {
+    @font-face {
+        font-family: 'Altform';
+        src: url('/fonts/Altform/Altform-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Altform';
+        src: url('/fonts/Altform/Altform-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'EditorialNew';
+        src: url('/fonts/EditorialNew/EditorialNew-Ultralight.woff2') format('woff2');
+        font-weight: 200;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+
+        --primary: 0 0% 0%;
+        /* Placeholder */
+        --primary-foreground: 0 0% 100%;
+
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+
+        --accent: 210 40% 96.1%;
+        /* Placeholder */
+        --accent-foreground: 222.2 47.4% 11.2%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-manrope), sans-serif;
+    }
+
+    p,
+    li,
+    input,
+    textarea,
+    select,
+    label,
+    span,
+    button {
+        font-family: var(--font-manrope), sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-oswald), sans-serif;
+    }
+}
+
+/* Lenis Smooth Scroll Recommended CSS */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Film Grain Texture */
+.bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Utility Animations */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Stitch Design Utilities */
+.text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    color: transparent;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.font-altform,
+.font-editorial {
+    font-family: var(--font-oswald), sans-serif !important;
+    font-style: normal !important;
+}
+
+.bg-primary,
+.data-\[state\=checked\]\:bg-primary[data-state="checked"] {
+    background-color: #3b82f6 !important;
+}
+
+.hover\:bg-primary:hover,
+.hover\:bg-primary\/80:hover,
+.hover\:bg-primary\/90:hover,
+.group:hover .group-hover\:bg-primary {
+    background-color: #2563eb !important;
+}
+
+.text-primary,
+.hover\:text-primary:hover,
+.group:hover .group-hover\:text-primary {
+    color: #3b82f6 !important;
+}
+
+.border-primary,
+.focus\:border-primary:focus,
+.group:hover .group-hover\:border-primary {
+    border-color: #3b82f6 !important;
+}
+
+.hover\:border-primary\/30:hover,
+.hover\:border-primary\/40:hover,
+.hover\:border-primary\/50:hover,
+.focus\:border-primary\/40:focus,
+.focus\:border-primary\/50:focus,
+.group:hover .group-hover\:border-primary\/30 {
+    border-color: rgba(59, 130, 246, 0.75) !important;
+}
+
+.text-white\/20,
+.text-white\/25,
+.text-white\/30,
+.text-white\/35,
+.text-white\/40,
+.text-white\/45,
+.text-foreground\/20,
+.text-foreground\/30,
+.text-foreground\/40,
+.text-foreground\/45,
+.text-slate-400,
+.text-gray-400,
+.text-neutral-400,
+.text-neutral-500 {
+    color: #9ca3af !important;
+}
+
+.text-white\/50,
+.text-white\/55,
+.text-white\/60,
+.text-white\/65,
+.text-white\/70,
+.text-white\/75,
+.text-foreground\/50,
+.text-foreground\/55,
+.text-foreground\/60,
+.text-foreground\/65,
+.text-foreground\/70,
+.text-foreground\/75,
+.text-slate-300 {
+    color: #e5e7eb !important;
+}
+
+.border-slate-200,
+.border-slate-900 {
+    border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* ── Image Auto-Slider ── */
+@keyframes scroll-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.infinite-scroll {
+    animation: scroll-right 25s linear infinite;
+}
+
+.slider-mask {
+    mask: linear-gradient(90deg,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%);
+    -webkit-mask: linear-gradient(90deg,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%);
+}
+
+.slider-card {
+    transition: transform 0.3s ease;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ── Hero Animations ── */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-slide {
+    animation: slide 52s linear infinite;
+    width: max-content;
+}
+
+/* Hero single background: always visible, Ken Burns only */
+/* heroFade kept in case slideshow is re-enabled later */
+@keyframes heroFade {
+    0% {
+        opacity: 0;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes heroKenBurns {
+    0% {
+        transform: scale(1) translate3d(0%, 0%, 0);
+    }
+
+    100% {
+        transform: scale(1) translate3d(0%, 0%, 0);
+    }
+}
+
+@keyframes heroKenBurnsMobile {
+    0% {
+        transform: scale(1) translate3d(0%, 0%, 0);
+    }
+
+    100% {
+        transform: scale(1) translate3d(0%, 0%, 0);
+    }
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: none;
+    image-rendering: crisp-edges;
+    will-change: auto;
+    animation: heroFade 50s linear infinite;
+}
+
+/* Static single-image variant — always visible, no animation */
+.hero-slide-static {
+    opacity: 1;
+    animation: none;
+}
+
+@media (max-width: 768px) {
+    .hero-slide {
+        inset: 0;
+        filter: none;
+        animation: heroFade 50s linear infinite;
+    }
+
+    .hero-slide-static {
+        opacity: 1;
+        animation: none;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-overlay-main {
+    /* removed — no longer used */
+}
+
+.hero-overlay-vignette {
+    /* removed — no longer used */
+}
+
+.hero-overlay-grain {
+    /* removed — no longer used */
+}
+
+.hero-overlay-bridge {
+    top: auto;
+    height: 20vh;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+}
