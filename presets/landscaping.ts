@@ -87,7 +87,7 @@ export const landscapingPreset = {
                 icon: 'Zap',
                 accent: 'text-amber-300',
                 summary: 'Your driveway is starting to show its age. A few issues could get worse if left.',
-                recommendation: 'A free site survey could identify quick wins to extend its life — or explore upgrade options.',
+                recommendation: 'A consultation could identify quick wins to extend its life — or explore upgrade options.',
             },
             {
                 scoreRange: [9, 15] as [number, number],
@@ -100,11 +100,11 @@ export const landscapingPreset = {
         ]
     },
     booking: {
-        title: 'Book a Free Site Survey',
+        title: 'Book a Consultation',
         description: "Schedule a no-obligation visit from our team. We'll measure up, discuss your ideas, and provide a detailed written quote.",
         trustSignals: [
             { icon: 'Shield', text: 'Fully insured with public liability cover' },
-            { icon: 'Clock', text: 'Free site surveys — usually within 48 hours' },
+            { icon: 'Clock', text: 'Consultations — usually within 48 hours' },
             { icon: 'CheckCircle', text: '100+ verified 5-star reviews' },
             { icon: 'MessageSquare', text: 'Detailed written quotes with no hidden costs' },
         ]

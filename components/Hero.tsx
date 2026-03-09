@@ -150,7 +150,7 @@ export default function Hero({ tagline }: HeroProps) {
 
     return (
         <section
-            className={`relative h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-opacity duration-700 ease-out ${heroReady ? 'opacity-100' : 'opacity-0'}`}
+            className={`relative min-h-screen h-[100svh] md:h-screen w-full overflow-hidden bg-background text-foreground transition-opacity duration-700 ease-out ${heroReady ? 'opacity-100' : 'opacity-0'}`}
         >
             <div className="absolute inset-0 z-0 pointer-events-none">
                 {/* Dynamic hero background slider or gradient placeholder */}
@@ -194,7 +194,7 @@ export default function Hero({ tagline }: HeroProps) {
             <div className="absolute inset-0 z-20 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-0">
                     {/* Main Logo - Animated Shutter Image */}
-                    <div className="relative w-[94vw] md:w-[85vw] max-w-[1200px]" style={{ aspectRatio: '3.5 / 1' }}>
+                    <div className="relative w-[92vw] sm:w-[84vw] md:w-[64vw] lg:w-[60vw] xl:w-[56vw] max-w-[980px]" style={{ aspectRatio: '3.5 / 1' }}>
                         <HeroShutterImage
                             src={clientPhotos['logo']?.[0] || config.images.logo}
                             alt={config.businessName}
@@ -204,7 +204,7 @@ export default function Hero({ tagline }: HeroProps) {
                     </div>
 
                     {/* Tagline + Subtag — single wider glass bubble */}
-                    <div className="mt-3 md:mt-8 px-4 flex justify-center">
+                    <div className="mt-3 md:mt-5 px-4 flex justify-center">
                         <div className="w-fit max-w-[92vw] md:max-w-[82vw] rounded-3xl md:rounded-full bg-black/22 backdrop-blur-[7px] border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                             <div className="flex flex-col items-center gap-1 md:gap-2 px-3 py-2 md:px-[1.875rem] md:py-4">
                                 <p
@@ -232,7 +232,7 @@ export default function Hero({ tagline }: HeroProps) {
                     <div className="w-full border-t border-dashed border-white/45"></div>
                     {/* Sliding row (single duplicated rail for stable iOS loop) */}
                     <div className="py-1 sm:py-2 overflow-hidden">
-                        <div className="flex w-max animate-slide-loop">
+                        <div className="flex shrink-0 min-w-full w-max animate-slide-loop">
                             {allProjects.map((project, index) => {
                                 const isDuplicate = index >= projects.length
 

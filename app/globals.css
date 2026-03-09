@@ -292,6 +292,14 @@ html.lenis body {
     backface-visibility: hidden;
 }
 
+.animate-slide {
+    -webkit-animation: slideLoop 35s linear infinite;
+    animation: slideLoop 35s linear infinite;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
 /* Hero single background: always visible, Ken Burns only */
 /* heroFade kept in case slideshow is re-enabled later */
 @keyframes heroFade {

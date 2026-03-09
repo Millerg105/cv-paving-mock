@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState, type ComponentType, type FormEvent } from
 import { AnimatePresence, motion } from 'framer-motion';
 import {
     ArrowRight,
+    Check,
     CheckCircle,
     ChevronRight,
     Clock3,
@@ -134,7 +135,7 @@ function buildRoadmap(answers: Answers): Roadmap {
             roi: wantsPremium
                 ? 'A premium front-drive upgrade usually gives one of the quickest visible lifts to kerb appeal, especially when buyers or guests compare nearby homes.'
                 : 'A tidy, well-finished drive often delivers fast visual value because it changes the first impression of the whole house immediately.',
-            nextStep: 'Book a free site survey so we can assess levels, drainage and the best-fit driveway finish for your frontage.',
+            nextStep: 'Book a consultation so we can assess levels, drainage and the best-fit driveway finish for your frontage.',
             socialProof: `Recent driveway and frontage projects across ${config.serviceArea} are one of the main reasons homeowners call ${config.shortName} after seeing local transformations.`,
         };
     }
@@ -178,22 +179,37 @@ function buildRoadmap(answers: Answers): Roadmap {
     };
 }
 
-function OptionCard({ option, onClick }: { option: Choice; onClick: () => void }) {
+function OptionCard({ option, onClick, selected }: { option: Choice; onClick: () => void; selected?: boolean }) {
     const Icon = option.icon;
 
     return (
         <button
             onClick={onClick}
-            className="group w-full rounded-[28px] border border-white/10 bg-white/[0.04] p-5 text-left transition-all duration-300 hover:border-primary/40 hover:bg-white/[0.08]"
+            className={`group relative overflow-hidden w-full rounded-[20px] transition-all duration-300 ${selected
+                ? 'bg-primary text-white shadow-[0_10px_25px_-5px_rgba(59,130,246,0.4)] ring-2 ring-primary ring-offset-2 ring-offset-background'
+                : 'bg-primary/95 text-white/90 hover:bg-primary shadow-lg'
+                }`}
         >
-            <div className="mb-5 flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary transition-colors group-hover:border-primary/30 group-hover:bg-primary/10">
-                    <Icon className="h-5 w-5" />
+            <div className="p-6">
+                <div className="mb-4 flex items-center justify-between">
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm transition-colors ${selected ? 'bg-white/30' : 'group-hover:bg-white/30'
+                        }`}>
+                        <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    {selected ? (
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary">
+                            <Check className="h-4 w-4 stroke-[3px]" />
+                        </div>
+                    ) : (
+                        <ArrowRight className="h-5 w-5 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                    )}
                 </div>
-                <ArrowRight className="h-4 w-4 text-white/20 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary" />
+                <h4 className="text-xl font-bold tracking-tight">{option.label}</h4>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-white/80">{option.hint}</p>
             </div>
-            <h4 className="text-lg font-semibold text-white">{option.label}</h4>
-            <p className="mt-2 text-sm leading-relaxed text-white/45">{option.hint}</p>
+
+            {/* Subtle gloss effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </button>
     );
 }
@@ -381,6 +397,7 @@ export default function BoilerQuiz() {
                                                         <OptionCard
                                                             key={option.id}
                                                             option={option}
+                                                            selected={answers.area === option.id}
                                                             onClick={() => {
                                                                 if (!answers.postcode.trim()) {
                                                                     return;
@@ -420,7 +437,7 @@ export default function BoilerQuiz() {
 
                                             <div className="grid gap-3 md:grid-cols-2">
                                                 {painOptions.map((option) => (
-                                                    <OptionCard key={option.id} option={option} onClick={() => nextWithAnswer('pain', option.id)} />
+                                                    <OptionCard key={option.id} option={option} selected={answers.pain === option.id} onClick={() => nextWithAnswer('pain', option.id)} />
                                                 ))}
                                             </div>
                                         </motion.div>
@@ -446,7 +463,7 @@ export default function BoilerQuiz() {
 
                                             <div className="grid gap-3 md:grid-cols-2">
                                                 {goalOptions.map((option) => (
-                                                    <OptionCard key={option.id} option={option} onClick={() => nextWithAnswer('goal', option.id)} />
+                                                    <OptionCard key={option.id} option={option} selected={answers.goal === option.id} onClick={() => nextWithAnswer('goal', option.id)} />
                                                 ))}
                                             </div>
                                         </motion.div>
@@ -472,7 +489,7 @@ export default function BoilerQuiz() {
 
                                             <div className="grid gap-3 md:grid-cols-3">
                                                 {upkeepOptions.map((option) => (
-                                                    <OptionCard key={option.id} option={option} onClick={() => nextWithAnswer('upkeep', option.id)} />
+                                                    <OptionCard key={option.id} option={option} selected={answers.upkeep === option.id} onClick={() => nextWithAnswer('upkeep', option.id)} />
                                                 ))}
                                             </div>
                                         </motion.div>
@@ -498,7 +515,7 @@ export default function BoilerQuiz() {
 
                                             <div className="grid gap-3 md:grid-cols-2">
                                                 {budgetOptions.map((option) => (
-                                                    <OptionCard key={option.id} option={option} onClick={() => nextWithAnswer('budget', option.id)} />
+                                                    <OptionCard key={option.id} option={option} selected={answers.budget === option.id} onClick={() => nextWithAnswer('budget', option.id)} />
                                                 ))}
                                             </div>
                                         </motion.div>
