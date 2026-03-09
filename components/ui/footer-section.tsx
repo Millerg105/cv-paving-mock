@@ -20,7 +20,7 @@ function Footerdemo() {
 
   React.useEffect(() => {
     fetch('/api/client-photos')
-      .then(res => res.json())
+      .then(res => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
       .then(data => setClientPhotos(data))
       .catch(() => { });
   }, []);
@@ -28,8 +28,10 @@ function Footerdemo() {
   const faviconSrc = clientPhotos['favicon']?.[0] || clientPhotos['logo']?.[0] || config.images.logo;
 
   const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -41,7 +43,7 @@ function Footerdemo() {
       <div className="container relative mx-auto px-4 py-12 md:px-6 lg:px-8">
         {/* Logo / Favicon at top */}
         <div className="mb-8 flex items-center gap-3">
-          <a href="#hero" onClick={scrollToTop} className="flex items-center gap-3 no-underline group">
+          <a href="/#hero" onClick={scrollToTop} className="flex items-center gap-3 no-underline group">
             <img
               src={faviconSrc}
               alt={config.businessName}
@@ -83,11 +85,11 @@ function Footerdemo() {
           <div>
             <h3 className="mb-4 text-lg font-semibold text-white">Quick Links</h3>
             <nav className="space-y-2 text-sm">
-              <a href="#hero" className="block text-white transition-colors hover:text-primary">Home</a>
-              <a href="#about" className="block text-white transition-colors hover:text-primary">About Us</a>
+              <a href="/#hero" className="block text-white transition-colors hover:text-primary">Home</a>
+              <a href="/#about" className="block text-white transition-colors hover:text-primary">About Us</a>
               <a href="/featured-projects" className="block text-white transition-colors hover:text-primary">Our Work</a>
-              <a href="#booking" className="block text-white transition-colors hover:text-primary">Book</a>
-              <a href="#testimonials" className="block text-white transition-colors hover:text-primary">Reviews</a>
+              <a href="/#booking" className="block text-white transition-colors hover:text-primary">Book</a>
+              <a href="/#testimonials" className="block text-white transition-colors hover:text-primary">Reviews</a>
             </nav>
           </div>
 
@@ -110,9 +112,9 @@ function Footerdemo() {
                       href="https://www.facebook.com/cgpavingcompany/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 hover:border-white/30"
+                      className="inline-flex h-[44px] w-[44px] items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 hover:border-white/30"
                     >
-                      <Facebook className="h-4 w-4" />
+                      <Facebook className="h-5 w-5" />
                       <span className="sr-only">Facebook</span>
                     </a>
                   </TooltipTrigger>
@@ -126,9 +128,9 @@ function Footerdemo() {
                       href="https://www.instagram.com/cgpavingcompany"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 hover:border-white/30"
+                      className="inline-flex h-[44px] w-[44px] items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 hover:border-white/30"
                     >
-                      <Instagram className="h-4 w-4" />
+                      <Instagram className="h-5 w-5" />
                       <span className="sr-only">Instagram</span>
                     </a>
                   </TooltipTrigger>
@@ -144,9 +146,9 @@ function Footerdemo() {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center md:flex-row">
           <p className="text-sm text-white/60">© {new Date().getFullYear()} {config.businessName}. All rights reserved.</p>
           <nav className="flex gap-4 text-sm">
-            <a href="#" className="text-white/60 transition-colors hover:text-primary">Privacy Policy</a>
-            <a href="#" className="text-white/60 transition-colors hover:text-primary">Terms of Service</a>
-            <a href="#" className="text-white/60 transition-colors hover:text-primary">Cookie Settings</a>
+            <span className="text-white/40 cursor-not-allowed">Privacy Policy</span>
+            <span className="text-white/40 cursor-not-allowed">Terms of Service</span>
+            <span className="text-white/40 cursor-not-allowed">Cookie Settings</span>
           </nav>
         </div>
       </div>

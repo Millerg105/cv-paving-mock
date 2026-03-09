@@ -40,6 +40,7 @@ export default function HeroShutterImage({
                     src={src}
                     alt={alt}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain"
                     priority={priority}
                 />
@@ -62,7 +63,7 @@ export default function HeroShutterImage({
                     filter: "sepia(100%) hue-rotate(190deg) saturate(500%)" // Turns white to blue-ish
                 }}
             >
-                <Image src={src} alt="" fill className="object-contain opacity-80" priority={priority} />
+                <Image src={src} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain opacity-80" priority={priority} />
             </motion.div>
 
             {/* Middle Slice - White/Grey (Reverse) */}
@@ -73,7 +74,7 @@ export default function HeroShutterImage({
                 className="absolute inset-0 z-20 pointer-events-none"
                 style={{ clipPath: "polygon(0 35%, 100% 35%, 100% 65%, 0 65%)" }}
             >
-                <Image src={src} alt="" fill className="object-contain opacity-60" priority={priority} />
+                <Image src={src} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain opacity-60" priority={priority} />
             </motion.div>
 
             {/* Bottom Slice - Blue Tint */}
@@ -87,7 +88,7 @@ export default function HeroShutterImage({
                     filter: "sepia(100%) hue-rotate(190deg) saturate(500%)"
                 }}
             >
-                <Image src={src} alt="" fill className="object-contain opacity-80" priority={priority} />
+                <Image src={src} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain opacity-80" priority={priority} />
             </motion.div>
         </div>
     );

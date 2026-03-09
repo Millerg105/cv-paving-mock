@@ -24,7 +24,7 @@ export default function Hero({ tagline }: HeroProps) {
 
     React.useEffect(() => {
         fetch('/api/client-photos')
-            .then(res => res.json())
+            .then(res => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
             .then(data => {
                 setClientPhotos(data)
                 if (!data?.['hero-background']?.length) {
@@ -47,10 +47,10 @@ export default function Hero({ tagline }: HeroProps) {
     }, [backgrounds.length])
 
     React.useEffect(() => {
-        if (photosLoaded && backgrounds.length > 0) {
+        if (photosLoaded) {
             setHeroReady(true)
         }
-    }, [photosLoaded, backgrounds.length])
+    }, [photosLoaded])
 
     const sliderImages = clientPhotos['hero-slider']?.length > 0
         ? clientPhotos['hero-slider']
@@ -150,7 +150,7 @@ export default function Hero({ tagline }: HeroProps) {
 
     return (
         <section
-            className="relative h-screen w-full overflow-hidden bg-background text-foreground"
+            className={`relative h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-opacity duration-700 ease-out ${heroReady ? 'opacity-100' : 'opacity-0'}`}
         >
             <div className="absolute inset-0 z-0 pointer-events-none">
                 {/* Dynamic hero background slider or gradient placeholder */}
@@ -204,9 +204,9 @@ export default function Hero({ tagline }: HeroProps) {
                     </div>
 
                     {/* Tagline + Subtag — single wider glass bubble */}
-                    <div className="mt-8 px-4 flex justify-center">
+                    <div className="mt-3 md:mt-8 px-4 flex justify-center">
                         <div className="w-fit max-w-[92vw] md:max-w-[82vw] rounded-3xl md:rounded-full bg-black/22 backdrop-blur-[7px] border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-                            <div className="flex flex-col items-center gap-2 px-5 py-3 md:px-[1.875rem] md:py-4">
+                            <div className="flex flex-col items-center gap-1 md:gap-2 px-3 py-2 md:px-[1.875rem] md:py-4">
                                 <p
                                     className="max-w-[620px] text-[clamp(1.1rem,1.4vw,1.12rem)] leading-[1.45] text-white font-medium text-center"
                                     style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.75)' }}
@@ -226,31 +226,30 @@ export default function Hero({ tagline }: HeroProps) {
             </div>
 
             {/* Freshman.tv-style ticker at bottom */}
-            <div className="absolute bottom-[6%] left-0 right-0 z-20 overflow-hidden">
+            <div className="absolute bottom-[3%] md:bottom-[6%] left-0 right-0 z-20 overflow-hidden">
                 <div className="bg-[rgba(5,10,22,0.58)] backdrop-blur-[7px] shadow-[0_-8px_24px_rgba(0,0,0,0.4)]">
                     {/* Top dashed line */}
                     <div className="w-full border-t border-dashed border-white/45"></div>
                     {/* Sliding row (Two-Container Marquee Fix for iOS) */}
-                    <div className="py-2 overflow-hidden flex w-full">
+                    <div className="py-1 sm:py-2 overflow-hidden flex w-full">
                         {/* Track 1 */}
                         <div className="flex animate-slide min-w-full">
                             {projects.map((project, index) => (
-                                <div key={`t1-${index}`} className="flex items-center flex-shrink-0 cursor-pointer group px-4">
+                                <div key={`t1-${index}`} className="flex items-center flex-shrink-0 cursor-pointer group px-2 sm:px-4">
                                     {/* Text */}
-                                    <div className="flex flex-col justify-center gap-1.5 pr-5 w-[250px] shrink-0">
-                                        <span className="text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
-                                        <span className="text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
-                                        <span className="text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-3">{project.description}</span>
+                                    <div className="flex flex-col justify-center gap-1 sm:gap-1.5 pr-3 sm:pr-5 w-[160px] sm:w-[220px] md:w-[250px] shrink-0">
+                                        <span className="text-[0.82rem] sm:text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
+                                        <span className="text-[0.68rem] sm:text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
+                                        <span className="text-[0.72rem] sm:text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-2 sm:line-clamp-3">{project.description}</span>
                                     </div>
                                     {/* Image */}
-                                    <div className="relative aspect-[3/2] w-[260px] shrink-0 overflow-hidden rounded-sm sm:w-[285px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
+                                    <div className="relative aspect-[3/2] w-[180px] shrink-0 overflow-hidden rounded-sm sm:w-[250px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
                                         <Image
                                             src={project.image}
                                             alt={project.title}
                                             fill
-                                            priority={true}
                                             unoptimized={true}
-                                            sizes="(max-width: 640px) 230px, (max-width: 768px) 250px, (max-width: 1024px) 275px, (max-width: 1280px) 295px, 315px"
+                                            sizes="(max-width: 640px) 180px, (max-width: 768px) 250px, (max-width: 1024px) 310px, (max-width: 1280px) 335px, 355px"
                                             className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                                         />
                                     </div>
@@ -261,22 +260,21 @@ export default function Hero({ tagline }: HeroProps) {
                         {/* Track 2 (Duplicate for Seamless Loop) */}
                         <div className="flex animate-slide min-w-full">
                             {projects.map((project, index) => (
-                                <div key={`t2-${index}`} className="flex items-center flex-shrink-0 cursor-pointer group px-4">
+                                <div key={`t2-${index}`} className="flex items-center flex-shrink-0 cursor-pointer group px-2 sm:px-4">
                                     {/* Text */}
-                                    <div className="flex flex-col justify-center gap-1.5 pr-5 w-[250px] shrink-0">
-                                        <span className="text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
-                                        <span className="text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
-                                        <span className="text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-3">{project.description}</span>
+                                    <div className="flex flex-col justify-center gap-1 sm:gap-1.5 pr-3 sm:pr-5 w-[160px] sm:w-[220px] md:w-[250px] shrink-0">
+                                        <span className="text-[0.82rem] sm:text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
+                                        <span className="text-[0.68rem] sm:text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
+                                        <span className="text-[0.72rem] sm:text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-2 sm:line-clamp-3">{project.description}</span>
                                     </div>
                                     {/* Image */}
-                                    <div className="relative aspect-[3/2] w-[260px] shrink-0 overflow-hidden rounded-sm sm:w-[285px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
+                                    <div className="relative aspect-[3/2] w-[180px] shrink-0 overflow-hidden rounded-sm sm:w-[250px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
                                         <Image
                                             src={project.image}
                                             alt={project.title}
                                             fill
-                                            priority={true}
                                             unoptimized={true}
-                                            sizes="(max-width: 640px) 230px, (max-width: 768px) 250px, (max-width: 1024px) 275px, (max-width: 1280px) 295px, 315px"
+                                            sizes="(max-width: 640px) 180px, (max-width: 768px) 250px, (max-width: 1024px) 310px, (max-width: 1280px) 335px, 355px"
                                             className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                                         />
                                     </div>

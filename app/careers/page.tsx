@@ -42,7 +42,7 @@ export default function CareersPage() {
 
                     <div className="grid gap-6 md:grid-cols-2">
                         {/* Job 1 */}
-                        <div className="flex flex-col items-center justify-between rounded-2xl border border-foreground/10 bg-white p-8 text-center shadow-md transition-all hover:border-primary/50 hover:shadow-lg">
+                        <div className="flex flex-col items-center justify-between rounded-2xl border border-foreground/10 bg-foreground/5 p-8 text-center shadow-md transition-all hover:border-primary/50 hover:shadow-lg">
                             <div>
                                 <h3 className="mb-2 text-2xl font-bold text-foreground font-oswald">Landscaper / Team Leader</h3>
                                 <p className="mb-6 text-sm text-foreground/70">
@@ -60,7 +60,7 @@ export default function CareersPage() {
                         </div>
 
                         {/* Job 2 */}
-                        <div className="flex flex-col items-center justify-between rounded-2xl border border-foreground/10 bg-white p-8 text-center shadow-md transition-all hover:border-primary/50 hover:shadow-lg">
+                        <div className="flex flex-col items-center justify-between rounded-2xl border border-foreground/10 bg-foreground/5 p-8 text-center shadow-md transition-all hover:border-primary/50 hover:shadow-lg">
                             <div>
                                 <h3 className="mb-2 text-2xl font-bold text-foreground font-oswald">Trainee Landscaper</h3>
                                 <p className="mb-6 text-sm text-foreground/70">

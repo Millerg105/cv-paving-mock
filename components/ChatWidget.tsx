@@ -16,7 +16,7 @@ export default function ChatWidget() {
 
     useEffect(() => {
         fetch('/api/client-photos')
-            .then(res => res.json())
+            .then(res => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
             .then(data => setClientPhotos(data))
             .catch(() => { })
     }, [])

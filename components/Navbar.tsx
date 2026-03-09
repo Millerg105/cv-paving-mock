@@ -15,7 +15,7 @@ export default function Navbar() {
 
     useEffect(() => {
         fetch('/api/client-photos')
-            .then((res) => res.json())
+            .then((res) => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
             .then((data) => setClientPhotos(data))
             .catch((err) => console.error('Failed to fetch client photos', err));
     }, []);

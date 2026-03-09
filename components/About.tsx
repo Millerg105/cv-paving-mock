@@ -11,7 +11,7 @@ export default function About() {
 
     useEffect(() => {
         fetch('/api/client-photos')
-            .then(res => res.json())
+            .then(res => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
             .then(data => setClientPhotos(data))
             .catch(err => console.error("Failed to fetch client photos", err));
     }, []);
@@ -103,6 +103,7 @@ export default function About() {
                                         src={acc.image}
                                         alt={acc.label}
                                         fill
+                                        sizes="(max-width: 768px) 170px, 190px"
                                         className="object-contain"
                                     />
                                 </div>
@@ -122,6 +123,7 @@ export default function About() {
                                 src={teamImage}
                                 alt="The CG Paving team"
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1152px"
                                 className="object-cover"
                                 style={{ objectPosition: 'center 28%' }}
                             />
@@ -175,6 +177,7 @@ export default function About() {
                                         src={item.image}
                                         alt={item.title}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />

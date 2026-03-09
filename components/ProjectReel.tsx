@@ -38,6 +38,7 @@ export default function ProjectReel({ images }: { images: string[] }) {
                                 src={src}
                                 alt={`Project ${i}`}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 40vw"
                                 className="object-cover"
                             />
                         </div>

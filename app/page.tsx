@@ -36,7 +36,7 @@ export default function Home() {
             <MissedCallBanner />
 
             {/* Page 2: About Us */}
-            <section id="about">
+            <section>
                 <About />
             </section>
 
