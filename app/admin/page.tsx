@@ -1277,7 +1277,7 @@ export default function AdminWizard() {
                                             {detectedColors.length > 0 && (
                                                 <>
                                                     <p className="text-xs text-white/40 text-center">
-                                                        We detected these colours from your logo — click to assign:
+                                                        We detected these colours from your logo. Click to assign:
                                                     </p>
                                                     <div className="flex justify-center gap-2 flex-wrap">
                                                         {detectedColors.map((c, i) => (

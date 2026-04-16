@@ -87,7 +87,7 @@ export const landscapingPreset = {
                 icon: 'Zap',
                 accent: 'text-amber-300',
                 summary: 'Your driveway is starting to show its age. A few issues could get worse if left.',
-                recommendation: 'A consultation could identify quick wins to extend its life — or explore upgrade options.',
+                recommendation: 'A consultation could identify quick wins to extend its life, or explore upgrade options.',
             },
             {
                 scoreRange: [9, 15] as [number, number],
@@ -104,20 +104,20 @@ export const landscapingPreset = {
         description: "Schedule a no-obligation visit from our team. We'll measure up, discuss your ideas, and provide a detailed written quote.",
         trustSignals: [
             { icon: 'Shield', text: 'Fully insured with public liability cover' },
-            { icon: 'Clock', text: 'Consultations — usually within 48 hours' },
+            { icon: 'Clock', text: 'Consultations usually within 48 hours' },
             { icon: 'CheckCircle', text: '100+ verified 5-star reviews' },
             { icon: 'MessageSquare', text: 'Detailed written quotes with no hidden costs' },
         ]
     },
     reviews: [
-        { name: "Martin Hewitt", username: "@martin_h", body: "Absolutely transformed our front garden. New resin driveway, porcelain patio and cedar screening. The lads were brilliant — tidy, professional, and the finish is stunning.", img: "https://avatar.vercel.sh/martin", date: "4 days ago" },
+        { name: "Martin Hewitt", username: "@martin_h", body: "Absolutely transformed our front garden. New resin driveway, porcelain patio and cedar screening. The lads were brilliant: tidy, professional, and the finish is stunning.", img: "https://avatar.vercel.sh/martin", date: "4 days ago" },
         { name: "Claire Seddon", username: "@claire_s", body: "Had block paving done on our drive and a porcelain patio out the back. Quality of work is outstanding. Neighbours keep asking who did it!", img: "https://avatar.vercel.sh/claire", date: "1 week ago" },
         { name: "Neil Worthington", username: "@neil_w", body: "From quote to completion, everything was first class. The resin bound driveway looks incredible and completely changed the front of our house.", img: "https://avatar.vercel.sh/neil", date: "2 weeks ago" },
         { name: "Janet Prescott", username: "@janet_p", body: "We were nervous about the cost but they worked within our budget. Indian stone patio looks beautiful. Really pleased we went with them.", img: "https://avatar.vercel.sh/janet", date: "1 month ago" },
         { name: "Kevin Burgess", username: "@kevin_b", body: "Third time using CG Paving. Did the front drive, back patio, and now the side pathway. Consistent quality every time. Wouldn't go anywhere else.", img: "https://avatar.vercel.sh/kevin", date: "1 month ago" },
-        { name: "Amy Greenall", username: "@amy_g", body: "Full garden redesign — artificial grass, porcelain paving, and feature lighting. It's like a completely different house. Can't recommend highly enough.", img: "https://avatar.vercel.sh/amy", date: "2 months ago" },
+        { name: "Amy Greenall", username: "@amy_g", body: "Full garden redesign with artificial grass, porcelain paving, and feature lighting. It's like a completely different house. Can't recommend highly enough.", img: "https://avatar.vercel.sh/amy", date: "2 months ago" },
         { name: "Gary Melling", username: "@gary_m", body: "Red cedar fencing and a new block-paved drive. The team were on site every day at 8am, no messing. Job done in 4 days. Excellent.", img: "https://avatar.vercel.sh/gary", date: "3 months ago" },
         { name: "Diane Marsh", username: "@diane_m", body: "Had a terrible old concrete drive that was crumbling. The resin bound replacement is night and day. Adds so much to the front of the house.", img: "https://avatar.vercel.sh/diane", date: "4 months ago" },
-        { name: "Phil Knowles", username: "@phil_k", body: "Drainage was a big problem on our old drive. New one has proper channels and soakaways — no more puddles. Great engineering as well as great looks.", img: "https://avatar.vercel.sh/phil", date: "5 months ago" },
+        { name: "Phil Knowles", username: "@phil_k", body: "Drainage was a big problem on our old drive. New one has proper channels and soakaways, no more puddles. Great engineering as well as great looks.", img: "https://avatar.vercel.sh/phil", date: "5 months ago" },
     ]
 };

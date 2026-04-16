@@ -145,10 +145,18 @@ function Footerdemo() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center md:flex-row">
           <p className="text-sm text-white/60">© {new Date().getFullYear()} {config.businessName}. All rights reserved.</p>
-          <nav className="flex gap-4 text-sm">
+          <nav className="flex flex-wrap items-center justify-center gap-4 text-sm">
             <span className="text-white/40 cursor-not-allowed">Privacy Policy</span>
             <span className="text-white/40 cursor-not-allowed">Terms of Service</span>
             <span className="text-white/40 cursor-not-allowed">Cookie Settings</span>
+            <a
+              href="https://sovereignsystem.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 transition-colors hover:text-primary"
+            >
+              Built by Sovereign Systems
+            </a>
           </nav>
         </div>
       </div>

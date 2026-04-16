@@ -457,7 +457,7 @@ export default function OnlineBooking() {
                                 <AnimatePresence mode="wait" custom={direction}>
 
                                     {/* ════════════════════════════════════════════
-                                        STEP 1 — Instant Ballpark
+                                        STEP 1 · Instant Ballpark
                                         ════════════════════════════════════════════ */}
                                     {currentStep === 1 && !isSubmitted && (
                                         <motion.div
@@ -610,7 +610,7 @@ export default function OnlineBooking() {
                                     )}
 
                                     {/* ════════════════════════════════════════════
-                                        STEP 2 — Service Selection
+                                        STEP 2 · Service Selection
                                         ════════════════════════════════════════════ */}
                                     {currentStep === 2 && !isSubmitted && (
                                         <motion.div
@@ -676,7 +676,7 @@ export default function OnlineBooking() {
                                     )}
 
                                     {/* ════════════════════════════════════════════
-                                        STEP 3 — Date & Time
+                                        STEP 3 · Date & Time
                                         ════════════════════════════════════════════ */}
                                     {currentStep === 3 && !isSubmitted && (
                                         <motion.div
@@ -819,7 +819,7 @@ export default function OnlineBooking() {
                                                     <Info className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                                                     <p className="text-xs text-white/50 leading-relaxed">
                                                         <span className="text-white font-bold">{selectedDateData?.day} {selectedDateData?.dayNum} {selectedDateData?.month}</span> at{' '}
-                                                        <span className="text-white font-bold">{selectedTime}</span> — {selectedServiceData?.name}. No payment required at booking.
+                                                        <span className="text-white font-bold">{selectedTime}</span> for {selectedServiceData?.name}. No payment required at booking.
                                                     </p>
                                                 </motion.div>
                                             )}
@@ -827,7 +827,7 @@ export default function OnlineBooking() {
                                     )}
 
                                     {/* ════════════════════════════════════════════
-                                        STEP 4 — Customer Details
+                                        STEP 4 · Customer Details
                                         ════════════════════════════════════════════ */}
                                     {currentStep === 4 && !isSubmitted && (
                                         <motion.div
@@ -939,7 +939,7 @@ export default function OnlineBooking() {
                                     )}
 
                                     {/* ════════════════════════════════════════════
-                                        STEP 5 — Review & Confirm
+                                        STEP 5 · Review & Confirm
                                         ════════════════════════════════════════════ */}
                                     {currentStep === 5 && !isSubmitted && (
                                         <motion.div

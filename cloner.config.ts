@@ -11,7 +11,7 @@ const config: ClonerConfig = {
   businessName: 'CG Paving Company',
   shortName: 'CG Paving',
   tagline: 'Resin Bound Driveways & Garden Design Specialists',
-  metaDescription: 'CG Paving Company — Trusted driveway installers in Wigan. Resin bound, block paving, porcelain patios, Indian stone, fencing & landscaping. 100+ 5★ reviews.',
+  metaDescription: 'CG Paving Company - Trusted driveway installers in Wigan. Resin bound, block paving, porcelain patios, Indian stone, fencing & landscaping. 100+ 5★ reviews.',
   serviceArea: 'Wigan & Greater Manchester',
 
   // ── Contact ──────────────────────────────────────────────────────────────
