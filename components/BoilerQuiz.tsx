@@ -186,8 +186,8 @@ function OptionCard({ option, onClick, selected }: { option: Choice; onClick: ()
         <button
             onClick={onClick}
             className={`group relative overflow-hidden w-full rounded-[20px] transition-all duration-300 ${selected
-                ? 'bg-primary text-white shadow-[0_10px_25px_-5px_rgba(59,130,246,0.4)] ring-2 ring-primary ring-offset-2 ring-offset-background'
-                : 'bg-primary/95 text-white/90 hover:bg-primary shadow-lg'
+                ? 'bg-[#1e3a8a] text-white shadow-[0_10px_25px_-5px_rgba(30,58,138,0.55)] ring-2 ring-[#1e3a8a] ring-offset-2 ring-offset-background'
+                : 'bg-[#1e3a8a]/90 text-white/90 hover:bg-[#1e3a8a] shadow-lg'
                 }`}
         >
             <div className="p-6">
@@ -197,7 +197,7 @@ function OptionCard({ option, onClick, selected }: { option: Choice; onClick: ()
                         <Icon className="h-6 w-6 text-white" />
                     </div>
                     {selected ? (
-                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[#1e3a8a]">
                             <Check className="h-4 w-4 stroke-[3px]" />
                         </div>
                     ) : (

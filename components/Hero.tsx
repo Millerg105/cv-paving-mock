@@ -19,24 +19,18 @@ interface HeroProps {
 export default function Hero({ tagline }: HeroProps) {
     const [clientPhotos, setClientPhotos] = React.useState<Record<string, string[]>>({})
     const [currentBgIndex, setCurrentBgIndex] = React.useState(0)
-    const [photosLoaded, setPhotosLoaded] = React.useState(false)
-    const [heroReady, setHeroReady] = React.useState(false)
+    const heroReady = true
 
     React.useEffect(() => {
         fetch('/api/client-photos')
             .then(res => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
-            .then(data => {
-                setClientPhotos(data)
-                if (!data?.['hero-background']?.length) {
-                    setPhotosLoaded(true)
-                }
-            })
-            .catch(() => setPhotosLoaded(true))
+            .then(data => setClientPhotos(data))
+            .catch(() => { })
     }, [])
 
     const backgrounds = clientPhotos['hero-background']?.length > 0
         ? clientPhotos['hero-background']
-        : [] // Will show gradient placeholder if empty
+        : []
 
     React.useEffect(() => {
         if (backgrounds.length <= 1) return
@@ -45,12 +39,6 @@ export default function Hero({ tagline }: HeroProps) {
         }, 6000)
         return () => clearInterval(interval)
     }, [backgrounds.length])
-
-    React.useEffect(() => {
-        if (photosLoaded) {
-            setHeroReady(true)
-        }
-    }, [photosLoaded])
 
     const sliderImages = clientPhotos['hero-slider']?.length > 0
         ? clientPhotos['hero-slider']
@@ -167,11 +155,6 @@ export default function Hero({ tagline }: HeroProps) {
                                 priority={index === 0}
                                 unoptimized={true}
                                 fetchPriority={index === 0 ? "high" : "auto"}
-                                onLoad={() => {
-                                    if (index === 0) {
-                                        setPhotosLoaded(true)
-                                    }
-                                }}
                                 className="object-cover object-center grayscale-[0.2] contrast-[1.1]"
                                 sizes="100vw"
                             />
