@@ -1,29 +1,24 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Bath, PhoneCall, Wrench } from 'lucide-react'
-import config from '@/cloner.config'
+import { ClipboardCheck, ShieldCheck, Sparkles } from 'lucide-react'
 
 export default function MissedCallBanner() {
-    const accreditationText = config.accreditations?.length > 0
-        ? config.accreditations.slice(0, 3).join(', ') + ' certified.'
-        : 'Fully qualified and certified professionals.';
-
     const serviceCards = [
         {
-            title: 'Emergency Call Outs',
-            description: 'Around-the-clock emergency response when you need it most.',
-            icon: PhoneCall
+            title: 'Free Site Surveys',
+            description: 'We visit your property, measure up, and provide a detailed written quote at no cost.',
+            icon: ClipboardCheck
         },
         {
             title: 'Professional Services',
-            description: accreditationText,
-            icon: Bath
+            description: 'Fully insured, family-run team delivering premium driveways, patios, and landscaping across Wigan and Greater Manchester.',
+            icon: ShieldCheck
         },
         {
-            title: 'Service & Repair',
-            description: 'Keep systems running with regular maintenance, repairs, and expert care.',
-            icon: Wrench
+            title: 'Aftercare & Maintenance',
+            description: 'Sealing, jet washing, re-pointing, and drainage checks to keep your investment looking fresh for years.',
+            icon: Sparkles
         }
     ]
 
@@ -61,21 +56,6 @@ export default function MissedCallBanner() {
                         })}
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 14 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        className="flex flex-col items-center gap-2 border-t border-white/10 bg-white/[0.03] px-6 py-5 text-center md:flex-row md:justify-center md:gap-3 md:px-10"
-                    >
-                        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary">
-                            <PhoneCall className="h-4 w-4" strokeWidth={2.2} />
-                        </span>
-                        <p className="text-[0.98rem] leading-relaxed text-white/90 md:text-[1.02rem]">
-                            Missed a call? We instantly text customers back and aim to return urgent calls within 30 minutes.
-                            <span className="ml-1 font-semibold text-primary">Reply YES for priority support.</span>
-                        </p>
-                    </motion.div>
                 </div>
             </div>
         </section>

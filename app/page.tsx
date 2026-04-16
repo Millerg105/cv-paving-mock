@@ -32,7 +32,6 @@ export default function Home() {
                 />
             </section>
 
-            {/* Missed Call Text-Back Banner */}
             <MissedCallBanner />
 
             {/* Page 2: About Us */}
