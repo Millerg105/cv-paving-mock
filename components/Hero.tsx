@@ -18,8 +18,15 @@ interface HeroProps {
 
 export default function Hero({ tagline }: HeroProps) {
     const [clientPhotos, setClientPhotos] = React.useState<Record<string, string[]>>({})
-    const [currentBgIndex, setCurrentBgIndex] = React.useState(0)
+    const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0)
     const heroReady = true
+
+    const heroVideos = [
+        '/videos/hero golden  hour.mp4',
+        '/videos/hero-closerain.mp4',
+        '/videos/hero-driveway.mp4',
+        '/videos/hero-gardenreveal.mp4'
+    ]
 
     React.useEffect(() => {
         fetch('/api/client-photos')
@@ -28,17 +35,12 @@ export default function Hero({ tagline }: HeroProps) {
             .catch(() => { })
     }, [])
 
-    const backgrounds = clientPhotos['hero-background']?.length > 0
-        ? clientPhotos['hero-background']
-        : []
-
     React.useEffect(() => {
-        if (backgrounds.length <= 1) return
         const interval = setInterval(() => {
-            setCurrentBgIndex(prev => (prev + 1) % backgrounds.length)
-        }, 6000)
+            setCurrentVideoIndex(prev => (prev + 1) % heroVideos.length)
+        }, 8000)
         return () => clearInterval(interval)
-    }, [backgrounds.length])
+    }, [heroVideos.length])
 
     const sliderImages = clientPhotos['hero-slider']?.length > 0
         ? clientPhotos['hero-slider']
@@ -141,24 +143,25 @@ export default function Hero({ tagline }: HeroProps) {
             className={`relative min-h-screen h-[100svh] md:h-screen w-full overflow-hidden bg-background text-foreground transition-opacity duration-700 ease-out ${heroReady ? 'opacity-100' : 'opacity-0'}`}
         >
             <div className="absolute inset-0 z-0 pointer-events-none">
-                {/* Dynamic hero background slider or gradient placeholder */}
-                {backgrounds.length > 0 ? (
-                    backgrounds.map((bg, index) => (
-                        <div
-                            key={bg}
-                            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentBgIndex ? 'opacity-100' : 'opacity-0'}`}
-                        >
-                            <Image
-                                src={bg}
-                                alt="Hero Background"
-                                fill
-                                priority={index === 0}
-                                unoptimized={true}
-                                fetchPriority={index === 0 ? "high" : "auto"}
-                                className="object-cover object-center grayscale-[0.2] contrast-[1.1]"
-                                sizes="100vw"
-                            />
-                        </div>
+                {/* Dynamic hero video carousel with gradient placeholder fallback */}
+                {heroVideos.length > 0 ? (
+                    heroVideos.map((videoSrc, index) => (
+                        <video
+                            key={videoSrc}
+                            src={videoSrc}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload={index === 0 ? 'auto' : 'metadata'}
+                            className="absolute inset-0 h-full w-full object-cover object-center grayscale-[0.2] contrast-[1.1]"
+                            style={{
+                                opacity: index === currentVideoIndex ? 1 : 0,
+                                transitionProperty: 'opacity',
+                                transitionDuration: '1500ms',
+                                transitionTimingFunction: 'ease-in-out'
+                            }}
+                        />
                     ))
                 ) : (
                     <div
