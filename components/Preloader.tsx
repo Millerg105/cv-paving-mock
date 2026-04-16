@@ -10,7 +10,7 @@ export default function Preloader({ title = "LOADING" }: { title?: string }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false)
-        }, 2500) // 2.5s simulated load
+        }, 800)
         return () => clearTimeout(timer)
     }, [])
 
@@ -20,7 +20,7 @@ export default function Preloader({ title = "LOADING" }: { title?: string }) {
                 <motion.div
                     className="fixed inset-0 z-[9999] flex items-center justify-center bg-background text-foreground"
                     initial={{ y: 0 }}
-                    exit={{ y: '-100%', transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+                    exit={{ y: '-100%', transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] } }}
                 >
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -37,7 +37,7 @@ export default function Preloader({ title = "LOADING" }: { title?: string }) {
                                 className="absolute inset-0 bg-primary"
                                 initial={{ x: '-100%' }}
                                 animate={{ x: '0%' }}
-                                transition={{ duration: 2.2, ease: "easeInOut" }}
+                                transition={{ duration: 0.7, ease: "easeInOut" }}
                             />
                         </div>
                     </motion.div>

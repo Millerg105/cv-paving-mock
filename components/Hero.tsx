@@ -243,19 +243,19 @@ export default function Hero({ tagline }: HeroProps) {
                                         aria-hidden={isDuplicate}
                                     >
                                         {/* Text */}
-                                        <div className="flex flex-col justify-center gap-1 sm:gap-1.5 pr-3 sm:pr-5 w-[160px] sm:w-[220px] md:w-[250px] shrink-0">
-                                            <span className="text-[0.82rem] sm:text-[0.98rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
-                                            <span className="text-[0.68rem] sm:text-[0.76rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
-                                            <span className="text-[0.72rem] sm:text-[0.82rem] text-white/72 leading-snug font-sans line-clamp-2 sm:line-clamp-3">{project.description}</span>
+                                        <div className="flex flex-col justify-center gap-1 sm:gap-1.5 pr-3 sm:pr-5 w-[130px] sm:w-[176px] md:w-[200px] shrink-0">
+                                            <span className="text-[0.72rem] sm:text-[0.86rem] font-bold text-white tracking-[0.02em] uppercase leading-tight line-clamp-2">{project.title}</span>
+                                            <span className="text-[0.6rem] sm:text-[0.68rem] text-white/78 tracking-[0.11em] uppercase shrink-0">{project.subtitle}</span>
+                                            <span className="text-[0.64rem] sm:text-[0.74rem] text-white/72 leading-snug font-sans line-clamp-2 sm:line-clamp-3">{project.description}</span>
                                         </div>
                                         {/* Image */}
-                                        <div className="relative aspect-[3/2] w-[180px] shrink-0 overflow-hidden rounded-sm sm:w-[250px] md:w-[310px] lg:w-[335px] xl:w-[355px]">
+                                        <div className="relative aspect-[3/2] w-[140px] shrink-0 overflow-hidden rounded-sm sm:w-[200px] md:w-[248px] lg:w-[268px] xl:w-[284px]">
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
                                                 unoptimized={true}
-                                                sizes="(max-width: 640px) 180px, (max-width: 768px) 250px, (max-width: 1024px) 310px, (max-width: 1280px) 335px, 355px"
+                                                sizes="(max-width: 640px) 140px, (max-width: 768px) 200px, (max-width: 1024px) 248px, (max-width: 1280px) 268px, 284px"
                                                 className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                                             />
                                         </div>
